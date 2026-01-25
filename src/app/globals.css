@@ -1,0 +1,199 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+}
+
+/* Chris Cosmetics Gold Standard Theme - Luxe Gold & Black */
+:root {
+  --radius: 0.625rem;
+
+  /* Dark luxe background */
+  --background: oklch(0.12 0.01 250);
+  --foreground: oklch(0.95 0.01 85);
+
+  /* Cards - Dark with subtle warmth */
+  --card: oklch(0.16 0.01 250);
+  --card-foreground: oklch(0.95 0.01 85);
+
+  /* Popovers */
+  --popover: oklch(0.14 0.01 250);
+  --popover-foreground: oklch(0.95 0.01 85);
+
+  /* Primary - Rich Gold */
+  --primary: oklch(0.78 0.14 85);
+  --primary-foreground: oklch(0.12 0.01 250);
+
+  /* Secondary - Muted gold */
+  --secondary: oklch(0.22 0.02 85);
+  --secondary-foreground: oklch(0.85 0.08 85);
+
+  /* Muted */
+  --muted: oklch(0.20 0.01 250);
+  --muted-foreground: oklch(0.65 0.02 85);
+
+  /* Accent - Bright gold highlight */
+  --accent: oklch(0.85 0.16 85);
+  --accent-foreground: oklch(0.12 0.01 250);
+
+  /* Destructive - Red */
+  --destructive: oklch(0.55 0.22 25);
+
+  /* Borders */
+  --border: oklch(0.28 0.02 85);
+  --input: oklch(0.22 0.01 250);
+  --ring: oklch(0.78 0.14 85);
+
+  /* Gold shades for data viz */
+  --gold: oklch(0.78 0.14 85);
+  --gold-light: oklch(0.88 0.12 85);
+  --gold-dark: oklch(0.65 0.14 85);
+
+  /* Status colors */
+  --success: oklch(0.72 0.19 145);
+  --warning: oklch(0.80 0.16 85);
+  --danger: oklch(0.65 0.22 25);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar - gold accent */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: oklch(0.15 0.01 250);
+}
+
+::-webkit-scrollbar-thumb {
+  background: oklch(0.35 0.05 85);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.45 0.08 85);
+}
+
+/* Gold gradient text */
+.gold-gradient-text {
+  background: linear-gradient(135deg, oklch(0.88 0.12 85), oklch(0.70 0.14 85));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gold shimmer effect */
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    oklch(0.78 0.14 85) 0%,
+    oklch(0.90 0.10 85) 50%,
+    oklch(0.78 0.14 85) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Glass card effect */
+.glass-card {
+  background: oklch(0.16 0.01 250 / 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid oklch(0.30 0.04 85);
+}
+
+/* Gold glow */
+.glow-gold {
+  box-shadow: 0 0 30px oklch(0.78 0.14 85 / 0.3);
+}
+
+/* Metric card styles */
+.metric-card {
+  background: linear-gradient(135deg, oklch(0.18 0.02 85) 0%, oklch(0.14 0.01 250) 100%);
+  border: 1px solid oklch(0.30 0.04 85);
+}
+
+/* Gold Standard badge */
+.gold-badge {
+  background: linear-gradient(135deg, oklch(0.85 0.14 85), oklch(0.70 0.12 85));
+  color: oklch(0.12 0.01 250);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Performance bar styles */
+.performance-bar {
+  background: oklch(0.20 0.01 250);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.performance-fill {
+  background: linear-gradient(90deg, oklch(0.65 0.14 85), oklch(0.85 0.14 85));
+  transition: width 0.5s ease;
+}
+
+/* Gap indicator */
+.gap-indicator {
+  background: oklch(0.55 0.18 25 / 0.2);
+  border-left: 3px solid oklch(0.55 0.18 25);
+}
+
+/* Gauge number styling */
+.gauge-number {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
