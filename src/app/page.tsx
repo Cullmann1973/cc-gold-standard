@@ -26,6 +26,7 @@ import {
   Database,
   Award,
   Info,
+  ArrowLeft,
 } from "lucide-react";
 import {
   productionLines,
@@ -38,11 +39,13 @@ import {
   type ProductionLine,
   type SKUData,
 } from "@/lib/sample-data";
+import TechnicalInsights from "@/components/TechnicalInsights";
 
 export default function GoldStandardPage() {
   const [selectedLine, setSelectedLine] = useState<ProductionLine>(productionLines[0]);
   const [selectedSKU, setSelectedSKU] = useState<SKUData | null>(null);
   const [showMethodology, setShowMethodology] = useState(false);
+  const [showInsights, setShowInsights] = useState(false);
 
   const goldStandard = selectedLine.skus.find((sku) => sku.isGoldStandard);
   const goldReasons = goldStandard ? getGoldStandardReasoning(goldStandard, selectedLine.skus) : [];
@@ -55,9 +58,17 @@ export default function GoldStandardPage() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
+          {/* Back Button */}
+          <a
+            href="https://ullmann-blueprint.vercel.app/#ai"
+            className="inline-flex items-center gap-2 px-3 py-1.5 mb-3 text-muted-foreground hover:text-foreground bg-muted/50 hover:bg-muted border border-border rounded-lg transition-all group text-sm"
+          >
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <span className="font-medium">Back to Portfolio</span>
+          </a>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-3 sm:gap-4">
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-gold-light to-gold-dark flex items-center justify-center">
                 <Trophy className="w-5 h-5 text-background" />
               </div>
@@ -67,7 +78,13 @@ export default function GoldStandardPage() {
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-xs text-muted-foreground">Demo Mode</span>
+              <button
+                onClick={() => setShowInsights(true)}
+                className="flex items-center gap-2 px-3 py-1.5 bg-muted/50 hover:bg-muted border border-border rounded-lg transition-colors text-sm"
+              >
+                <Info className="w-4 h-4" />
+                <span className="hidden sm:inline">Technical Insights</span>
+              </button>
               <div className="px-3 py-1.5 rounded-full bg-primary/20 border border-primary/30">
                 <span className="text-xs font-medium text-primary">Sample Data</span>
               </div>
@@ -598,6 +615,9 @@ export default function GoldStandardPage() {
           </div>
         </footer>
       </main>
+
+      {/* Technical Insights Modal */}
+      <TechnicalInsights isOpen={showInsights} onClose={() => setShowInsights(false)} />
     </div>
   );
 }

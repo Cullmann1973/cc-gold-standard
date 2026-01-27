@@ -46,3 +46,4 @@ next-env.d.ts
 # Scripts
 install.ps1
 build.ps1
+.env*.local
