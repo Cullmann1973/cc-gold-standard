@@ -59,14 +59,14 @@ export default function GoldStandardPage() {
       {/* Header */}
       <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
-          {/* Back Button */}
-          <a
-            href="https://ullmann-blueprint.vercel.app/#ai"
-            className="inline-flex items-center gap-2 px-3 py-1.5 mb-3 text-muted-foreground hover:text-foreground bg-muted/50 hover:bg-muted border border-border rounded-lg transition-all group text-sm"
+          {/* Back Button - closes tab to return to portfolio */}
+          <button
+            onClick={() => window.close()}
+            className="inline-flex items-center gap-2 px-3 py-1.5 mb-3 text-muted-foreground hover:text-foreground bg-muted/50 hover:bg-muted border border-border rounded-lg transition-all group text-sm cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span className="font-medium">Back to Portfolio</span>
-          </a>
+          </button>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-3 sm:gap-4">
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-gold-light to-gold-dark flex items-center justify-center">
