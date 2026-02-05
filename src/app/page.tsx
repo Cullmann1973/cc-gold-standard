@@ -234,14 +234,14 @@ export default function GoldStandardPage() {
                     </div>
                     <p className="text-xs text-muted-foreground mb-2">{line.productCategory}</p>
 
-                    <div className="grid grid-cols-2 gap-2 mt-3">
-                      <div className="text-xs">
+                    <div className="grid grid-cols-2 gap-2 mt-3 overflow-hidden">
+                      <div className="text-xs truncate">
                         <span className="text-muted-foreground">Gold OEE: </span>
                         <span className="text-primary font-semibold font-mono">
                           {lineGoldStandard ? formatOEE(lineGoldStandard.metrics.oee) : "N/A"}
                         </span>
                       </div>
-                      <div className="text-xs">
+                      <div className="text-xs truncate text-right">
                         <span className="text-muted-foreground">Avg OEE: </span>
                         <span className="text-foreground font-semibold font-mono">{formatOEE(lineAvgOEE)}</span>
                       </div>
@@ -270,17 +270,17 @@ export default function GoldStandardPage() {
                 animate={{ opacity: 1, y: 0 }}
                 className="p-6 rounded-2xl border-2 border-primary bg-gradient-to-br from-primary/10 via-card to-card glow-gold"
               >
-                <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-gold-light to-gold-dark flex items-center justify-center">
+                <div className="flex items-start gap-4 overflow-hidden">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-gold-light to-gold-dark flex items-center justify-center flex-shrink-0">
                     <Trophy className="w-7 h-7 text-background" />
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="gold-badge px-2 py-0.5 rounded text-xs">Golden Standard</span>
-                      <span className="text-xs text-muted-foreground">{selectedLine.name} ({selectedLine.resourceCode})</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
+                      <span className="gold-badge px-2 py-0.5 rounded text-xs flex-shrink-0">Golden Standard</span>
+                      <span className="text-xs text-muted-foreground truncate">{selectedLine.name} ({selectedLine.resourceCode})</span>
                     </div>
-                    <h3 className="text-lg font-bold text-foreground mb-1">{goldStandard.name}</h3>
-                    <p className="text-xs text-muted-foreground font-mono mb-3">
+                    <h3 className="text-lg font-bold text-foreground mb-1 truncate">{goldStandard.name}</h3>
+                    <p className="text-xs text-muted-foreground font-mono mb-3 truncate">
                       Material: {goldStandard.id} | {goldStandard.units.toLocaleString()} units
                     </p>
 
